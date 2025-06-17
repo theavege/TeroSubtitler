@@ -71,9 +71,9 @@ A specific position relative to the video frame:
 L:[a number]%, where [a number] is a positive integer.
 A line number:
 L:[a number], where [a number] is a positive or negative integer.
-Text position	T:[a number]%, where [a number] is a positive integer.
-Text size	S:[a number]%, where [a number] is a positive integer.
-Text alignment	A:start or A:middle or A:end
+Text position   T:[a number]%, where [a number] is a positive integer.
+Text size   S:[a number]%, where [a number] is a positive integer.
+Text alignment  A:start or A:middle or A:end
 
 Cue setting example:
 WEBVTT FILE
@@ -393,7 +393,7 @@ begin
           Text := '';
           //while (i < SubtitleFile.Count) and (Pos(' --> ', SubtitleFile[i]) = 0) and (SubtitleFile[i] <> '') do
           while (i < SubtitleFile.Count) and (Pos(' --> ', SubtitleFile[i]) = 0) and
-            not IsNumeric(SubtitleFile[i]) do
+            not IsNumber(SubtitleFile[i]) do
           begin
             if Text <> '' then
               Text := Text + sLineBreak + SubtitleFile[i]

@@ -56,8 +56,8 @@ jobs:
               "openssl version -a".split(),
               check=True,
           )
-          os.environ["PATH"] += f":/opt/homebrew/etc/openssl@1.1/bin"
-          os.environ["DYLD_LIBRARY_PATH"] = f"/opt/homebrew/etc/openssl@1.1/lib"
+          os.environ["PATH"] += f":/opt/homebrew/Cellar/openssl@1.1/bin"
+          os.environ["DYLD_LIBRARY_PATH"] = f"/opt/homebrew/Cellar/openssl@1.1/lib"
           subprocess.run(
               "brew install --cask lazarus".split(),
               check=True,

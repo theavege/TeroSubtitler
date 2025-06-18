@@ -61,7 +61,7 @@ jobs:
               "brew --prefix openssl@3".split(),
                check=True,
                capture_output=True,
-          ).stdout.decode()
+          ).stdout.decode().trim()
           print(OPENSSL)
           os.environ["PATH"] += f":{OPENSSL}/bin"
           print(os.environ["PATH"])

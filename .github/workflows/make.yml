@@ -58,12 +58,14 @@ jobs:
               check=True,
           )
           OPENSSL=subprocess.run(
-              "brew --prefix openssl".split(),
+              "brew --prefix openssl@3".split(),
                check=True,
                capture_output=True,
           ).stdout.decode()
-          os.environ["INSTANTFPCOPTIONS"] = "-Fu/Applications/Lazarus/components/lazutils"
+          print(OPENSSL)
           os.environ["PATH"] += f":{OPENSSL}/bin"
+          print(os.environ["PATH"])
+          os.environ["INSTANTFPCOPTIONS"] = "-Fu/Applications/Lazarus/components/lazutils"
           subprocess.run(
               "instantfpc .github/workflows/make.pas build".split(),
               check=True,

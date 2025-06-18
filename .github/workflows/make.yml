@@ -62,9 +62,8 @@ jobs:
                check=True,
                capture_output=True,
           ).stdout.decode().strip("\n")
-          print(OPENSSL)
           os.environ["PATH"] += f":{OPENSSL}/bin"
-          print(os.environ["PATH"])
+          os.environ["DYLD_LIBRARY_PATH"] += f":{OPENSSL}/bin"
           os.environ["INSTANTFPCOPTIONS"] = "-Fu/Applications/Lazarus/components/lazutils"
           subprocess.run(
               "instantfpc .github/workflows/make.pas build".split(),

@@ -52,17 +52,18 @@ jobs:
           """https://macappstore.org/lazarus"""
           import os
           import subprocess
+          subprocess.run(
+              "openssl version -a".split(),
+              check=True,
+          )
           OPENSSL=subprocess.run(
               "brew --prefix openssl".split(),
               check=True,
               capture_output=True,
           ).stdout.decode().strip("\n")
+          print(OPENSSL)
           os.environ["PATH"] += f":{OPENSSL}/bin"
           os.environ["DYLD_LIBRARY_PATH"] = f"{OPENSSL}/lib"
-          subprocess.run(
-              "openssl version -a".split(),
-              check=True,
-          )
           subprocess.run(
               "brew install --cask lazarus".split(),
               check=True,

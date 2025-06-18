@@ -56,8 +56,9 @@ jobs:
               "brew install --cask lazarus".split(),
               check=True,
           )
+          os.environ["INSTANTFPCOPTIONS"] = "-Fu/Library/Application Support/Lazarus/components/lazutils"
           subprocess.run(
-              "which lazbuild".split(),
+              "instantfpc .github/workflows/make.pas build".split(),
               check=True,
           )
 

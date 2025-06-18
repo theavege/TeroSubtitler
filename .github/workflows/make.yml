@@ -52,17 +52,8 @@ jobs:
           """https://macappstore.org/lazarus"""
           import os
           import subprocess
-          subprocess.run(
-              "brew install openssl@3".split(),
-              check=True,
-              capture_output=True,
-          )
-          subprocess.run(
-              "brew info openssl@3".split(),
-              check=True,
-          )
           OPENSSL=subprocess.run(
-              "brew --prefix openssl@3".split(),
+              "brew --prefix openssl".split(),
               check=True,
               capture_output=True,
           ).stdout.decode().strip("\n")

@@ -50,12 +50,16 @@ jobs:
         shell: python
         run: |
           """https://macappstore.org/lazarus"""
+          from sys import stderr
           import os
           import subprocess
           subprocess.run(
               "brew install --cask lazarus".split(),
               check=True,
           )
+          for root, _, files in os.walk("/Library/Application Support/Lazarus"):
+              if "lazutils" in root:
+                  print(str(root))
           os.environ["INSTANTFPCOPTIONS"] = "-Fu/Library/Application Support/Lazarus/components/lazutils"
           subprocess.run(
               "instantfpc .github/workflows/make.pas build".split(),

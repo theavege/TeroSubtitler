@@ -57,6 +57,10 @@ jobs:
               "brew install --cask lazarus".split(),
               check=True,
           )
+          subprocess.run(
+              "brew --prefix openssl@3".split(),
+              check=True,
+          )
           os.environ["INSTANTFPCOPTIONS"] = "-Fu/Applications/Lazarus/components/lazutils"
           subprocess.run(
               "instantfpc .github/workflows/make.pas build".split(),

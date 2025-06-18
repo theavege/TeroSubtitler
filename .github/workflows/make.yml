@@ -62,8 +62,13 @@ jobs:
               check=True,
           )
           os.environ["INSTANTFPCOPTIONS"] = "-Fu/Applications/Lazarus/components/lazutils"
+          os.environ["PATH"] = f"{os.environ.get('PATH')}:{subprocess.run(
+              'brew --prefix openssl@3'.split(),
+               check=True,
+               capture_output=True,
+          ).stdout.decode()}/bin"
           subprocess.run(
-              "instantfpc .github/workflows/make.pas build".split(),
+              "instantfpc .github/workflows/make.pas build".split(subprocess.run(),
               check=True,
           )
 

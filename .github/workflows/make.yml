@@ -61,6 +61,11 @@ jobs:
               "brew info openssl".split(),
               check=True,
           )
+          OPENSSL=subprocess.run(
+              "brew --prefix openssl@3".split(),
+              check=True,
+              capture_output=True,
+          ).stdout.decode().strip("\n")
           os.environ["PATH"] += f":{OPENSSL}/bin"
           os.environ["DYLD_LIBRARY_PATH"] = f"{OPENSSL}/lib"
           subprocess.run(
@@ -72,11 +77,6 @@ jobs:
               check=True,
               capture_output=True,
           )
-          OPENSSL=subprocess.run(
-              "brew --prefix openssl@3".split(),
-              check=True,
-              capture_output=True,
-          ).stdout.decode().strip("\n")
           os.environ["INSTANTFPCOPTIONS"] = "-Fu/Applications/Lazarus/components/lazutils"
           subprocess.run(
               "instantfpc .github/workflows/make.pas build".split(),

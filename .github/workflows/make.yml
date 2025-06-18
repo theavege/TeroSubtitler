@@ -58,21 +58,25 @@ jobs:
               capture_output=True,
           )
           subprocess.run(
+              "brew info openssl".split(),
+              check=True,
+          )
+          os.environ["PATH"] += f":{OPENSSL}/bin"
+          os.environ["DYLD_LIBRARY_PATH"] = f"{OPENSSL}/lib"
+          subprocess.run(
+              "openssl version -a".split(),
+              check=True,
+          )
+          subprocess.run(
               "brew install --cask lazarus".split(),
               check=True,
               capture_output=True,
-          )
-          subprocess.run(
-              "fppkg list".split(),
-              check=True,
           )
           OPENSSL=subprocess.run(
               "brew --prefix openssl@3".split(),
               check=True,
               capture_output=True,
           ).stdout.decode().strip("\n")
-          os.environ["PATH"] += f":{OPENSSL}/bin"
-          os.environ["DYLD_LIBRARY_PATH"] = f"{OPENSSL}/lib"
           os.environ["INSTANTFPCOPTIONS"] = "-Fu/Applications/Lazarus/components/lazutils"
           subprocess.run(
               "instantfpc .github/workflows/make.pas build".split(),

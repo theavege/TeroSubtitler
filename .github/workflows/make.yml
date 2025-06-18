@@ -50,7 +50,6 @@ jobs:
         shell: python
         run: |
           """https://macappstore.org/lazarus"""
-          from sys import stderr
           import os
           import subprocess
           subprocess.run(
@@ -64,7 +63,7 @@ jobs:
               capture_output=True,
           ).stdout.decode().strip("\n")
           os.environ["PATH"] += f":{OPENSSL}/bin"
-          os.environ["DYLD_LIBRARY_PATH"] = f":{OPENSSL}/bin"
+          os.environ["DYLD_LIBRARY_PATH"] = f"{OPENSSL}/bin"
           os.environ["INSTANTFPCOPTIONS"] = "-Fu/Applications/Lazarus/components/lazutils"
           subprocess.run(
               "instantfpc .github/workflows/make.pas build".split(),

@@ -60,7 +60,7 @@ jobs:
           for root, _, files in os.walk("/opt/homebrew/Cellar/lazarus/"):
               if "lazutils" in root:
                   print(str(root))
-          os.environ["INSTANTFPCOPTIONS"] = "-Fu/opt/homebrew/Cellar/lazarus/<version>/lazarus/components/lazutils"
+          os.environ["INSTANTFPCOPTIONS"] = "-Fu/opt/homebrew/Cellar/lazarus/*/lazarus/components/lazutils"
           subprocess.run(
               "instantfpc .github/workflows/make.pas build".split(),
               check=True,

@@ -65,7 +65,7 @@ jobs:
           os.environ["INSTANTFPCOPTIONS"] = "-Fu/Applications/Lazarus/components/lazutils"
           os.environ["PATH"] = f"{os.environ.get('PATH')}:{OPENSSL}/bin"
           subprocess.run(
-              "instantfpc .github/workflows/make.pas build".split(subprocess.run(),
+              "instantfpc .github/workflows/make.pas build".split(),
               check=True,
           )
 

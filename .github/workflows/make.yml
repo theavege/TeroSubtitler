@@ -57,7 +57,7 @@ jobs:
               check=True,
           )
           subprocess.run(
-              "instantfpc .github/workflows/make.pas build".split(),
+              "which lazbuild".split(),
               check=True,
           )
 

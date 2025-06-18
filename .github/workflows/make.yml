@@ -58,7 +58,7 @@ jobs:
               capture_output=True,
           )
           subprocess.run(
-              "brew info openssl".split(),
+              "brew info openssl@3".split(),
               check=True,
           )
           OPENSSL=subprocess.run(

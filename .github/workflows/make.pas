@@ -120,7 +120,7 @@ uses
   var
     OutFile: TStream;
   begin
-    //InitSSLInterface;
+    InitSSLInterface;
     Result := GetTempFileName;
     OutFile := TFileStream.Create(Result, fmCreate or fmOpenWrite);
     with TFPHttpClient.Create(nil) do

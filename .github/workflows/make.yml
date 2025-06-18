@@ -57,7 +57,7 @@ jobs:
               "brew install --cask lazarus".split(),
               check=True,
           )
-          for root, _, files in os.walk("/Lazarus"):
+          for root, _, files in os.walk("/"):
               if "lazutils" in root:
                   print(str(root))
           os.environ["INSTANTFPCOPTIONS"] = "-Fu/opt/homebrew/Cellar/lazarus/*/components/lazutils"

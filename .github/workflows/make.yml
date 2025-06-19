@@ -72,19 +72,21 @@ jobs:
           )
           os.environ["PATH"] += ":/Applications/Lazarus"
           subprocess.run(
-              "lazbuild --help".split(),
+              "lazbuild -v".split(),
               check=True,
+              capture_output=True,
+          )
+          subprocess.run(
+              "instantfpc -v".split(),
+              check=True,
+              capture_output=True,
           )
           os.environ["INSTANTFPCOPTIONS"] = "-Fu/Applications/Lazarus/components/lazutils"
           result = subprocess.run(
               "instantfpc .github/workflows/make.pas build".split(),
               capture_output=True,
           )
-          match result.returncode:
-              case 0:
-                  sys.stderr.write(result.stderr.decode())
-              case _:
-                  sys.stderr.write(result.stdout.decode())
+          sys.stderr.write(result.stderr.decode() if result.returncode != 0 else result.stdout.decode())
           sys.exit(result.returncode)
 
       - name: Build on Windows

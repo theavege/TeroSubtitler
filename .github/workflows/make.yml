@@ -70,9 +70,13 @@ jobs:
               check=True,
               capture_output=True,
           )
-          for root, _, files in os.walk("/"):Add commentMore actions
+          for root, _, files in os.walk("/"):
               if "lazbuild" in files:
                   print(str(root))
+          subprocess.run(
+              "lazbuild --help".split(),
+              check=True,
+          )
           os.environ["INSTANTFPCOPTIONS"] = "-Fu/Applications/Lazarus/components/lazutils"
           result = subprocess.run(
               "instantfpc .github/workflows/make.pas build".split(),

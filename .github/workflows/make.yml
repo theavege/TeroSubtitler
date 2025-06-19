@@ -70,9 +70,7 @@ jobs:
               check=True,
               capture_output=True,
           )
-          for root, _, files in os.walk("/"):
-              if "lazbuild" in files:
-                  print(str(root))
+          os.environ["PATH"] += ":/Applications/Lazarus"
           subprocess.run(
               "lazbuild --help".split(),
               check=True,

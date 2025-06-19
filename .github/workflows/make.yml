@@ -74,12 +74,6 @@ jobs:
           subprocess.run(
               "lazbuild -v".split(),
               check=True,
-              capture_output=True,
-          )
-          subprocess.run(
-              "instantfpc -v".split(),
-              check=True,
-              capture_output=True,
           )
           os.environ["INSTANTFPCOPTIONS"] = "-Fu/Applications/Lazarus/components/lazutils"
           result = subprocess.run(

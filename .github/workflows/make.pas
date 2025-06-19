@@ -112,7 +112,7 @@ uses
     else
     begin
       ExitCode += 1;
-      OutLog(etError, Result);
+      OutLog(etDebug, Result);
     end;
   end;
 

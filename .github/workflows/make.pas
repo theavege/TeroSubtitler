@@ -112,7 +112,7 @@ uses
     else
     begin
       ExitCode += 1;
-      OutLog(etError, SelectString(Result, '(Fatal|Error):'));
+      OutLog(etError, Result);
     end;
   end;
 

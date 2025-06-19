@@ -177,7 +177,8 @@ uses
   begin
     DT := Time;
     if FileExists('.gitmodules') then
-      if RunCommand('lazbuild', ['--help'], Result, [poStderrToOutPut]) then
+      if RunCommand('git', ['submodule', 'update', '--init', '--recursive',
+        '--force', '--remote'], Result, [poStderrToOutPut]) then
         OutLog(etInfo, Result)
       else
       begin
